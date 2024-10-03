@@ -14,6 +14,8 @@ public class Main {
         ServerSocket serverSocket = new ServerSocket(3000);
         Socket socket = serverSocket.accept();
 
+        System.out.println("un client è entrato!");
+
         BufferedReader in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
