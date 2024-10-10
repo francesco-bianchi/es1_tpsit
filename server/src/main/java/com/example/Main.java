@@ -13,18 +13,25 @@ public class Main {
 
         ServerSocket serverSocket = new ServerSocket(3000);
         Socket socket = serverSocket.accept();
-
-        System.out.println("un client è entrato!");
-
         BufferedReader in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        String stringaRic = "";
 
-        String stringaRic = in.readLine();
-        System.out.println("La stringa ricevuta: " + stringaRic);
+        do {
+            System.out.println("un client è entrato!");
 
-        String stringMaiusc = stringaRic.toUpperCase();
-        out.writeBytes(stringMaiusc + '\n');
+            stringaRic = in.readLine();
+            System.out.println("La stringa ricevuta: " + stringaRic);
 
-        System.out.println("server terminato!");
+            if(!stringaRic.equals("?")){
+                String stringMaiusc = stringaRic.toUpperCase();
+                out.writeBytes(stringMaiusc + '\n');
+            }
+
+            System.out.println("server terminato!");
+        } while (!stringaRic.equals("?"));
+        
+        serverSocket.close();
+        socket.close();
     }
 }
