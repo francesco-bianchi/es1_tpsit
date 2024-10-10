@@ -28,9 +28,9 @@ public class Main {
                 out.writeBytes(stringMaiusc + '\n');
             }
 
-            System.out.println("server terminato!");
         } while (!stringaRic.equals("?"));
         
+        System.out.println("server terminato!");
         serverSocket.close();
         socket.close();
     }
